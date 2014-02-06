@@ -21,23 +21,23 @@
 
 function run_colors
 {
-    echo entering ${FUNCNAME[0]}
+    lib_vmsg "entering ${FUNCNAME[0]}"
     # to show the use of main_error_recovery_functions (see also README)
     # in case of premature return we want to call colors_restore_something 
     main_error_recovery_functions["colors_restore_something"]="param1 param2"
-    echo my_color = $colors_my_color
+    lib_vmsg "my_color = $colors_my_color"
     case "$colors_my_color" in # ((
         red|green|blue):;;
         *) lib_exit 1 "no valid color"
     esac
     main_error_recovery_functions["colors_restore_something"]=
-    echo leaving ${FUNCNAME[0]}
+    lib_vmsg "leaving ${FUNCNAME[0]}"
 }
 
 function colors_restore_something
 {
-    echo entering ${FUNCNAME[0]}
+    lib_vmsg "entering ${FUNCNAME[0]}"
     echo "parameter 1 = $1, parameter 2 = $2"
-    echo leaving ${FUNCNAME[0]}
+    lib_vmsg "leaving ${FUNCNAME[0]}"
 }
 
